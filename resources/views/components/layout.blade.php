@@ -69,10 +69,19 @@
                         <li><a href="/articles">Articles</a></li>
                         <li><a href="/projects">Projects</a></li>
                         <li><a href="/contact">Contact</a></li>
+                        @auth
+                            <li><a>
+                                <form class="" action="/logout" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="hover:underline bg-transparent border-none p-0 m-0 text-inherit focus:outline-none appearance-none cursor-auto hover:bg-transparent hover:text-inherit hover:border-none">Logout</button>
+                                </form>
+                            </a></li>
+                        @endauth
                     </ul> <!-- s-header__menu-links -->
 
                     <div class="s-header__contact">
-                        <a href="/download-cv" class="btn btn--primary s-header__contact-btn">Download CV</a>                        
+                        <a href="/download-cv" class="btn btn--primary s-header__contact-btn">Download CV</a>                      
                     </div> <!-- s-header__contact -->
     
                 </nav> <!-- end s-header__nav -->
@@ -108,6 +117,21 @@
                         <li><a href="/articles">Articles</a></li>
                         <li><a href="/projects">Projects</a></li>
                         <li><a href="/contact">Contact</a></li>
+                        @auth
+                            <li>
+                                <a>
+                                    <form class="" action="/logout" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="hover:underline bg-transparent border-none p-0 m-0 text-inherit focus:outline-none appearance-none cursor-auto hover:bg-transparent hover:text-inherit hover:border-none">Logout</button>
+                                    </form>
+                                </a>
+                            </li>
+                        @endauth
+                        <br>
+                        @guest
+                        <li><a href="/login">Login</a></li>
+                        @endguest
                     </ul>
                 </div>
 
