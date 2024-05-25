@@ -69,6 +69,9 @@
                         <li><a href="/articles">Articles</a></li>
                         <li><a href="/projects">Projects</a></li>
                         <li><a href="/contact">Contact</a></li>
+                        <li><a></a></li>
+                        <li><a href="/articles/new">New Article</a></li>
+                        <li><a href="/projects/new">New Project</a></li>
                         @auth
                             <li><a>
                                 <form class="" action="/logout" method="POST">
@@ -117,6 +120,9 @@
                         <li><a href="/articles">Articles</a></li>
                         <li><a href="/projects">Projects</a></li>
                         <li><a href="/contact">Contact</a></li>
+                        <br>
+                        <li><a href="/articles/new">New Article</a></li>
+                        <li><a href="/projects/new">New Project</a></li>
                         @auth
                             <li>
                                 <a>
