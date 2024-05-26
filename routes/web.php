@@ -28,21 +28,23 @@ Route::middleware('guest')->group( function() {
 
 });
 
+Route::get('/', function () { return view('index'); });
+Route::get('/about', function () { return view('about'); });
+Route::get('/articles', function() { return view('articles'); });
+Route::get('/projects', function () { return view('projects'); });
+Route::get('/contact', function () { return view('contact'); });
+
+
 // Auth
 Route::middleware('auth')->group( function() {
 
-    Route::delete('/logout', [SessionController::class, 'destroy']);
+    // Create
     Route::get('/articles/new', [ArticlesController::class, 'create']);
     Route::post('/articles/new', [ArticlesController::class, 'store']);
+
+    // Update
+    Route::get('/articles/update/{article:id}', [ArticlesController::class, 'edit']);
+    Route::put('/articles/update/{article:id}', [ArticlesController::class, 'update']);
+
+    Route::delete('/logout', [SessionController::class, 'destroy']);
 } );
-
-Route::get('/', function () { return view('index'); });
-
-Route::get('/about', function () { return view('about'); });
-
-Route::get('/articles', function() { return view('articles'); });
-
-Route::get('/projects', function () { return view('projects'); });
-
-Route::get('/contact', function () { return view('contact'); });
-
