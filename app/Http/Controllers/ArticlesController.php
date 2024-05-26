@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -27,7 +28,16 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate
+        $attributes = $request->validate([
+            'title'     =>  ['required', 'max:40'],
+            'body'      =>  ['required']
+        ]);
+
+        // Save
+        $article = Article::create($attributes);
+
+        return redirect('/articles');
     }
 
     /**

@@ -33,25 +33,16 @@ Route::middleware('auth')->group( function() {
 
     Route::delete('/logout', [SessionController::class, 'destroy']);
     Route::get('/articles/new', [ArticlesController::class, 'create']);
+    Route::post('/articles/new', [ArticlesController::class, 'store']);
 } );
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', function () { return view('index'); });
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', function () { return view('about'); });
 
-Route::get('/articles', function() {
-    return view('articles');
-});
+Route::get('/articles', function() { return view('articles'); });
 
-Route::get('/projects', function () {
-    return view('projects');
-});
+Route::get('/projects', function () { return view('projects'); });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/contact', function () { return view('contact'); });
 
