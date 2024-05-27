@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js" >
 <head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- BASIC PAGE NEEDS -->
     <meta charset="utf-8">

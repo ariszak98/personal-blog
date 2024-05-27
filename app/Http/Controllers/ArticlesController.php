@@ -12,7 +12,15 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+        // Load Articles
+        $articles = Article::latest()->paginate(9);
+
+        // Cut Body Lengh
+        foreach($articles as $art){
+            $art->body = substr($art->body, 0, 150);
+        }
+
+        return view('articles.index')->with('articles', $articles);
     }
 
     /**
@@ -71,4 +79,13 @@ class ArticlesController extends Controller
     {
         //
     }
+
+
+    public function single(Article $article){
+
+        
+        return view('articles.single')->with('article', $article);
+    }
+
+
 }

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ArticlesController;
-
+use App\Models\Article;
 
 // Guest
 Route::middleware('guest')->group( function() {
@@ -30,7 +30,8 @@ Route::middleware('guest')->group( function() {
 
 Route::get('/', function () { return view('index'); });
 Route::get('/about', function () { return view('about'); });
-Route::get('/articles', function() { return view('articles'); });
+Route::get('/articles', [ArticlesController::class, 'index']);
+Route::get('/article/{article:id}', [ArticlesController::class, 'single']);
 Route::get('/projects', function () { return view('projects'); });
 Route::get('/contact', function () { return view('contact'); });
 
@@ -39,12 +40,12 @@ Route::get('/contact', function () { return view('contact'); });
 Route::middleware('auth')->group( function() {
 
     // Create
-    Route::get('/articles/new', [ArticlesController::class, 'create']);
-    Route::post('/articles/new', [ArticlesController::class, 'store']);
+    Route::get('/article/new', [ArticlesController::class, 'create']);
+    Route::post('/article/new', [ArticlesController::class, 'store']);
 
     // Update
-    Route::get('/articles/update/{article:id}', [ArticlesController::class, 'edit']);
-    Route::put('/articles/update/{article:id}', [ArticlesController::class, 'update']);
+    Route::get('/article/update/{article:id}', [ArticlesController::class, 'edit']);
+    Route::put('/article/update/{article:id}', [ArticlesController::class, 'update']);
 
     Route::delete('/logout', [SessionController::class, 'destroy']);
 } );
