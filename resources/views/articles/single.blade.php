@@ -1,4 +1,4 @@
-@section('title', 'Single Article')
+@section('title', $article->title)
 
 <x-layout>
 
@@ -31,6 +31,11 @@
                                 <span class="cat-links">
                                     <a href="blog.html">Productivity</a>
                                     <a href="blog.html">Marketing</a>
+                                </span>
+                            </div>
+                            <div>
+                                <span>
+                                    <a style="" class="underline" href="/article/update/{{ $article->id }}">Edit Article</a>
                                 </span>
                             </div>
                         </div> <!-- end entry__meta -->

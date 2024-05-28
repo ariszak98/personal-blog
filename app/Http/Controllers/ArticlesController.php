@@ -59,17 +59,30 @@ class ArticlesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Article $article)
     {
-        //
+        return view('articles.edit')->with('article', $article);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Article $article)
     {
-        //
+        // Validate
+        $attributes = $request->validate([
+            'title'     =>  ['required', 'max:40'],
+            'body'      =>  ['required']
+        ]);
+
+        // Update Object with new values
+        $article->title = request()->title;
+        $article->body = request()->body;
+
+        // Save
+        $article->save();
+
+        return redirect('/article/' . $article->id);
     }
 
     /**
