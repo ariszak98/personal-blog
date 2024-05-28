@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Projects;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -11,7 +12,10 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        //
+        // Load Articles
+        $projects = Projects::latest()->paginate(9);
+
+        return view('projects.index')->with('projects', $projects);
     }
 
     /**
@@ -19,7 +23,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.new');
     }
 
     /**
@@ -27,7 +31,17 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate
+        $attributes = $request->validate([
+            'name'             =>   ['required'],
+            'used'             =>   ['required'],
+            'description'      =>   ['required']
+        ]);
+
+        // Save
+        $article = Projects::create($attributes);
+
+        return redirect('/projects');
     }
 
     /**

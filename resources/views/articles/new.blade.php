@@ -26,21 +26,21 @@
                 <div style="max-width: 85%; margin: 50px auto; background-color: #fff; padding: 20px;">
 
 
-                    <form action="#" method="post">
+                    <form action="/articles/new" method="post">
                         @csrf
 
                       <div style="margin-bottom: 20px;">
-                        <label for="title" style="display: block; font-weight: bold; font-size: 35px;">Title:</label>
+                        <label for="title" style="display: block; font-weight: bold; font-size: 20px;">Title:</label>
                         <input required type="text" id="title" name="title"  style="width: 100%; padding: 10px; font-size: 16px; border: none; border-radius: 5px;">
                         @error('title')
                             <p class="text text-red-500 mt-1">{{ $message }}</p>
                         @enderror
                       </div>
 
-                      <br><br>
+                      <br>
 
                       <div style="margin-bottom: 20px;">
-                        <label for="body" style="display: block; font-weight: bold; font-size: 35px;">Body:</label>
+                        <label for="body" style="display: block; font-weight: bold; font-size: 20px;">Body:</label>
                         <textarea required cols="50" id="body" name="body" rows="5"  style="width: 100%; padding: 10px; font-size: 16px; border: none; border-radius: 5px; resize: vertical;"></textarea>
                         @error('body')
                             <p class="text text-red-500 mt-1">{{ $message }}</p>

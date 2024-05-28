@@ -40,46 +40,22 @@
                          <div class="grid-full grid-list-items list-items show-ctr">
 
 
-                             
-                             <div style="margin-top: 2em" class="grid-list-items__item list-items__item">
-                                 <div class="list-items__item-header">
-                                     <h3 style="font-weight: semibold; font-size: 1.7em;" class="list-items__item-title">
-                                        <a target="__blank" href="#" class="hover:text-blue-500">Digital Marketing</a>
-                                    </h3>
-                                 </div>
-                                 <div class="list-items__item-text">
-                                    <p style="font-size: small; "><b style="color: rgb(255, 123, 0);">Laravel, Blade</b></p>
-                                     <p>
-                                     Rerum quam quos. Aut asperiores 
-                                     sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                     magnam. Cumque ducimus laborum doloribus facere maxime vel earum quidem enim suscipit.
-                                     </p>
-                                     <br>
-                                     <!--
-                                     <ul class="list-services pt-4">
-                                         <li>Cumque Ducimus</li>
-                                         <li>Maxime Vel</li>
-                                         <li>Eligendi Et</li>
-                                     </ul>
-                                    -->
-                                 </div>
-                             </div> <!-- end list-items__item -->
 
-  
 
-                             <div style="margin-top: 2em" class="grid-list-items__item list-items__item">
+
+
+
+                            @foreach ($projects as $proj)
+
+                            <div style="margin-top: 2em" class="grid-list-items__item list-items__item">
                                 <div class="list-items__item-header">
                                     <h3 style="font-weight: semibold; font-size: 1.7em;" class="list-items__item-title">
-                                       <a target="__blank" href="#" class="hover:text-blue-500">Digital Marketing</a>
+                                       <a target="__blank" href="{{ $proj->url }}" class="hover:text-blue-500">{{ $proj->name }}</a>
                                    </h3>
                                 </div>
                                 <div class="list-items__item-text">
-                                   <p style="font-size: small; "><b style="color: rgb(255, 123, 0);">Laravel, Blade</b></p>
-                                    <p>
-                                    Rerum quam quos. Aut asperiores 
-                                    sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                    magnam. Cumque ducimus laborum doloribus facere maxime vel earum quidem enim suscipit.
-                                    </p>
+                                   <p style="font-size: small; "><b style="color: rgb(255, 123, 0);">{{ $proj->used }}</b></p>
+                                    <p>{{ $proj->description }}</p>
                                     <br>
                                     <!--
                                     <ul class="list-services pt-4">
@@ -90,8 +66,11 @@
                                    -->
                                 </div>
                             </div> <!-- end list-items__item -->
+                                
+                            @endforeach
+                             
 
-                            
+                   
                              
  
                          </div> <!-- grid-list-items -->

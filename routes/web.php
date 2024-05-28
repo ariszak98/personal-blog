@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\ProjectsController;
 use App\Models\Article;
 
 // Guest
@@ -32,16 +33,23 @@ Route::get('/', function () { return view('index'); });
 Route::get('/about', function () { return view('about'); });
 Route::get('/articles', [ArticlesController::class, 'index']);
 Route::get('/article/{article:id}', [ArticlesController::class, 'single']);
-Route::get('/projects', function () { return view('projects'); });
+
+Route::get('/projects', [ProjectsController::class, 'index']);
+Route::get('projects/new', [ProjectsController::class, 'create']);
+
 Route::get('/contact', function () { return view('contact'); });
 
 
 // Auth
 Route::middleware('auth')->group( function() {
 
-    // Create
-    Route::get('/article/new', [ArticlesController::class, 'create']);
-    Route::post('/article/new', [ArticlesController::class, 'store']);
+    // Create Article
+    Route::get('/articles/new', [ArticlesController::class, 'create']);
+    Route::post('/articles/new', [ArticlesController::class, 'store']);
+
+    // Create Project
+    Route::get('/projects/new', [ProjectsController::class, 'create']);
+    Route::post('/projects/new', [ProjectsController::class, 'store']);
 
     // Update
     Route::get('/article/update/{article:id}', [ArticlesController::class, 'edit']);
