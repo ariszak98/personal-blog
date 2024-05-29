@@ -88,9 +88,16 @@ class ArticlesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return redirect('/articles');
+    }
+
+    public function destroyConfirmation(Article $article){
+
+        return view('articles.single')->with(['delete' => true, 'article' => $article]);
     }
 
 

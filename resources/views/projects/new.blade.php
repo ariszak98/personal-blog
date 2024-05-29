@@ -1,4 +1,4 @@
-@section('title', 'New Article')
+@section('title', 'New Project')
 
 <x-layout>
     

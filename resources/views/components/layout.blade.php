@@ -25,6 +25,8 @@
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 
+    
+
 </head>
 
 
@@ -55,13 +57,13 @@
 
                 <div class="s-header__block">
                     <div class="s-header__logo">
-                        <a class="logo" href="/">
+                        <a class="logo" href="/" id="svg-link">
                             <img src="{{ asset('images/logo.svg') }}" alt="Homepage">
                         </a>
                     </div>
 
                     <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
-                </div> <!-- end s-header__block -->
+                </div>
 
                 <nav class="s-header__nav">
     
@@ -75,13 +77,20 @@
                         @auth
                         <li><a href="/articles/new">New Article</a></li>
                         <li><a href="/projects/new">New Project</a></li>
-                            <li><a>
-                                <form class="" action="/logout" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="hover:underline bg-transparent border-none p-0 m-0 text-inherit focus:outline-none appearance-none cursor-auto hover:bg-transparent hover:text-inherit hover:border-none">Logout</button>
-                                </form>
-                            </a></li>
+                        <li><a></a></li>
+                        <li><a id="submit-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                        <form style="display: none;" id="logout-form" action="/logout" method="post">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                document.querySelector('#submit-link').addEventListener('click', function(event) {
+                                    event.preventDefault();
+                                    document.getElementById('hidden-form').submit();
+                                });
+                            });
+                        </script>
                         @endauth
                     </ul> <!-- s-header__menu-links -->
 
@@ -113,36 +122,42 @@
                     incidunt perferendis tempore earum hic repellendus quisquam recusandae ipsa id esse. Nobis, aut deleniti.
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere ratione dignissimos.
                     </p>               
-                </div>                
+                </div> 
+
                 <div class="column xl-3 lg-6 md-12 s-footer__block s-footer__site-links">
                     <h3>Site Links</h3>
                     <ul class="link-list">
-                        <li><a class="smoothscroll" href="#top">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="/about">About</a></li>
                         <li><a href="/articles">Articles</a></li>
                         <li><a href="/projects">Projects</a></li>
                         <li><a href="/contact">Contact</a></li>
-                        
+                    </ul>
+                </div>
+
+                
+                <div class="column xl-3 lg-6 md-12 s-footer__block s-footer__site-links">
+                    <h3>Internal</h3>
+                    <ul class="link-list">
                         @auth
-                        <br>
                         <li><a href="/articles/new">New Article</a></li>
                         <li><a href="/projects/new">New Project</a></li>
-                            <li>
-                                <a>
-                                    <form class="" action="/logout" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="hover:underline bg-transparent border-none p-0 m-0 text-inherit focus:outline-none appearance-none cursor-auto hover:bg-transparent hover:text-inherit hover:border-none">Logout</button>
-                                    </form>
-                                </a>
-                            </li>
+                        <li>
+                            <a>
+                                <form class="" action="/logout" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="hover:underline bg-transparent border-none p-0 m-0 text-inherit focus:outline-none appearance-none cursor-auto hover:bg-transparent hover:text-inherit hover:border-none">Logout</button>
+                                </form>
+                            </a>
+                        </li>
                         @endauth
-                        <br>
                         @guest
                         <li><a href="/login">Login</a></li>
                         @endguest
                     </ul>
                 </div>
+                
 
                 
             </div>    

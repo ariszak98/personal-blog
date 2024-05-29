@@ -47,13 +47,18 @@ Route::middleware('auth')->group( function() {
     Route::get('/articles/new', [ArticlesController::class, 'create']);
     Route::post('/articles/new', [ArticlesController::class, 'store']);
 
+    // Update Article
+    Route::get('/article/update/{article:id}', [ArticlesController::class, 'edit']);
+    Route::put('/article/update/{article:id}', [ArticlesController::class, 'update']);
+
+    // Delete Article
+    Route::get('/article/delete/{article:id}', [ArticlesController::class, 'destroyConfirmation']);
+    Route::delete('/article/delete/{article:id}', [ArticlesController::class, 'destroy']);
+
     // Create Project
     Route::get('/projects/new', [ProjectsController::class, 'create']);
     Route::post('/projects/new', [ProjectsController::class, 'store']);
 
-    // Update
-    Route::get('/article/update/{article:id}', [ArticlesController::class, 'edit']);
-    Route::put('/article/update/{article:id}', [ArticlesController::class, 'update']);
-
+    
     Route::delete('/logout', [SessionController::class, 'destroy']);
 } );

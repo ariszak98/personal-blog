@@ -33,9 +33,14 @@
                                     <a href="blog.html">Marketing</a>
                                 </span>
                             </div>
-                            <div>
+                            <div class="entry__meta-cat">
                                 <span>
                                     <a style="" class="underline" href="/article/update/{{ $article->id }}">Edit Article</a>
+                                </span>
+                            </div>
+                            <div class="entry__meta-cat">
+                                <span>
+                                    <a style="" class="underline" href="/article/delete/{{ $article->id }}">Delete Article</a>
                                 </span>
                             </div>
                         </div> <!-- end entry__meta -->
@@ -48,7 +53,20 @@
 
                 <div class="row entry__primary width-narrower">
                     <div class="column xl-12"> 
-                        <p>{{ $article->body }}</p>
+
+                        @if (isset($delete) && $delete == true)
+                            <form method="post" action="/article/delete/{{ $article->id }}">
+                                @method('DELETE')
+                                @csrf
+
+                                <p>Are you sure you want to delete article <b>[{{ $article->title }}] ?</b></p>
+                                <br>
+                                <button type="submit" style="background-color: #e6e6e6; color: rgb(0, 0, 0); padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Delete</button>
+                            </form>
+                        @else
+                            <p>{{ $article->body }}</p>
+                        @endif
+                        
                     </div>
                 </div>
             
